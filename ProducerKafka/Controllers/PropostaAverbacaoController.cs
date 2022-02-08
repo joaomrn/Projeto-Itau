@@ -42,9 +42,9 @@ namespace ProducerKafka.Controllers
 
                 ValidaRequisicao(propostaAverbacao);
 
-                if (string.IsNullOrEmpty(_parcelaInvalida) ||
-                    string.IsNullOrEmpty(_prazoContratoInvalida) ||
-                    string.IsNullOrEmpty(_dataVencimentoInvalida))
+                if (!string.IsNullOrEmpty(_parcelaInvalida) ||
+                    !string.IsNullOrEmpty(_prazoContratoInvalida) ||
+                    !string.IsNullOrEmpty(_dataVencimentoInvalida))
                 {
                     return BadRequest(
                         new

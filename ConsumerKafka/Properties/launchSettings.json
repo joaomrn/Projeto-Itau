@@ -25,6 +25,7 @@
       "applicationUrl": "https://localhost:5001;http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
+
         "BOOTSTRAPSERVERS": "localhost:9092",
         "TOPICOAVERBACAO": "topic-averbacao",
         "TOPICOAVERBACAOFALHA": "topic-averbacao-dead-letter",
@@ -34,7 +35,7 @@
         "SaslUsername": "",
         "SaslPassword": "",
         "NomeConsumerGroup": "Averbacao-Consumer-Group",
-        "SslCaLocation": "/users/michael/repos/KafkaWelcomeKit/cacert.pem",
+        "SslCaLocation": "",
 
         "SchemaRegistryUrl": "localhost:8081",
         "SchemaRegistryRequestTimeoutMs": "5000",
