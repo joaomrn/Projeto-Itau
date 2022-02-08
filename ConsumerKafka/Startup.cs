@@ -1,6 +1,7 @@
 using ConsumerKafka.BackgroundServices;
 using Kafka.Domain.Interfaces;
 using Kafka.Domain.Services;
+using Kafka.Domain.Services.Produtor;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -31,6 +32,7 @@ namespace ConsumerKafka
 
             services.AddHostedService<PropostaAverbacaoService>();
             services.AddSingleton<IConsumidorSchema, ConsumidorSchema>();
+            services.AddSingleton<IProdutorSchema, ProdutorSchema>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

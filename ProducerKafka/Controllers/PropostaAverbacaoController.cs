@@ -36,7 +36,9 @@ namespace ProducerKafka.Controllers
             try
             {
                 var key = new Random().Next(0, 100000);
-                var result = await _produtorSchema.Enviar(key, propostaAverbacao);
+                var resultado = Newtonsoft.Json.JsonConvert.SerializeObject(propostaAverbacao);
+
+                var result = await _produtorSchema.Enviar(Environment.GetEnvironmentVariable("TOPICOAVERBACAO"), key, resultado);
 
                 if (result) return Ok();
                 else return BadRequest();

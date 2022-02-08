@@ -4,7 +4,6 @@ using Kafka.Domain.Interfaces;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Configuration;
 
 namespace Kafka.Domain.Services.Produtor
 {
@@ -27,20 +26,16 @@ namespace Kafka.Domain.Services.Produtor
 
         #region [ Métodos Publicos ]
 
-        public async Task<bool> Enviar(int key, PropostaAverbacao propostaAverbacao)
+        public async Task<bool> Enviar(string topico, int key, string propostaAverbacao)
         {
             var config = new ProducerConfig
             {
                 BootstrapServers = Environment.GetEnvironmentVariable("BOOTSTRAPSERVERS")
             };
 
-            var resultado = Newtonsoft.Json.JsonConvert.SerializeObject(propostaAverbacao);
-
             using (var producer = new ProducerBuilder<int, string>(config).Build())
             {
-                var result = await producer.ProduceAsync(
-                    Environment.GetEnvironmentVariable("TOPICOAVERBACAO"),
-                    new Message<int, string>() { Key = key, Value = resultado });
+                var result = await producer.ProduceAsync(topico, new Message<int, string>() { Key = key, Value = propostaAverbacao });
 
                 _logger.LogInformation($"Entregou a mensagem com key '{result.Message.Key}', value '{result.Message.Value}' na partição '{result.Partition}' e offset '{result.Offset}'");
 

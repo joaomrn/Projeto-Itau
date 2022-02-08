@@ -26,7 +26,8 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
         "BOOTSTRAPSERVERS": "localhost:9092",
-        "TOPICOAVERBACAO": "topic-averbacao"
+        "TOPICOAVERBACAO": "topic-averbacao",
+        "TOPICOAVERBACAOFALHA": "topic-averbacao-dead-letter"
       }
     }
   }
